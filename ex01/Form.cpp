@@ -6,7 +6,7 @@
 /*   By: dmodrzej <dmodrzej@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:01:57 by dmodrzej          #+#    #+#             */
-/*   Updated: 2025/01/19 17:04:19 by dmodrzej         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:55:06 by dmodrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void Form::beSigned()
 std::ostream & operator<<(std::ostream & os, Form const & form)
 {
 	os << "Form " << form.getName() << " requires grade " << form.getGradeToSign()
-		<< " to sign and grade " << form.getGradeToExecute() << " to execute.";
+		<< " to sign and grade " << form.getGradeToExecute() << " to execute";
 	return os;
 }

@@ -6,7 +6,7 @@
 /*   By: dmodrzej <dmodrzej@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:15:39 by dmodrzej          #+#    #+#             */
-/*   Updated: 2025/01/19 19:50:14 by dmodrzej         ###   ########.fr       */
+/*   Updated: 2025/01/19 20:07:27 by dmodrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,28 @@ std::ostream & operator<<(std::ostream & os, Bureaucrat const & bureaucrat)
 	return os;
 }
 
-void Bureaucrat::signForm(Form & form)
+void Bureaucrat::signForm(AForm & form)
 {
-	if (form.getGradeToSign() < _grade)
+	try
 	{
-		std::cout << _name << " cannot sign " << form.getName() << " because grade is too low" << std::endl;
-	}
-	else if (form.isSigned())
-	{
-		std::cout << _name << " cannot sign " << form.getName() << " because form is already signed" << std::endl;
-	}
-	else
-	{
-		form.beSigned();
+		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << _name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << _name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }

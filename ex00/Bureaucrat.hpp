@@ -6,7 +6,7 @@
 /*   By: dmodrzej <dmodrzej@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:15:51 by dmodrzej          #+#    #+#             */
-/*   Updated: 2025/01/19 16:31:10 by dmodrzej         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:44:39 by dmodrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,5 @@ class Bureaucrat
 		std::string const _name;
 		int _grade;
 };
+
+std::ostream & operator<<(std::ostream & os, Bureaucrat const & bureaucrat);
