@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmodrzej <dmodrzej@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dmodrzej <dmodrzej@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:01:57 by dmodrzej          #+#    #+#             */
-/*   Updated: 2025/01/19 19:55:06 by dmodrzej         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:11:24 by dmodrzej         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(std::string const name, int gradeToSign, int gradeToExecute):
 	_name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _signed(false)
@@ -59,8 +60,10 @@ bool Form::isSigned() const
 	return _signed;
 }
 
-void Form::beSigned()
+void Form::beSigned(Bureaucrat const & bureaucrat)
 {
+	if (bureaucrat.getGrade() > _gradeToSign)
+		throw Form::GradeTooLowException();
 	_signed = true;
 }
 
